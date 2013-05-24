@@ -5,6 +5,8 @@ initialize = ->
     center: new google.maps.LatLng(14.81, 5.50)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
+  accountId = $('#map-canvas').data('account_id')
+
   markers = []
   timeStamp = new Date().toString()
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
@@ -24,7 +26,7 @@ initialize = ->
 
   getMarkers = ->
     t = undefined
-    url = '/leads?from=' + encodeURIComponent(timeStamp)
+    url = '/account/' + accountId + '/leads?from=' + encodeURIComponent(timeStamp)
     console.log(url)
     $.getJSON(url, (data) =>
       generateLocations(data)

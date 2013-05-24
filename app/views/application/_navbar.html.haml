@@ -3,6 +3,9 @@
     .container
       = link_to 'MapMyLeads', root_path, class: 'brand'
 
+      %ul.nav
+        = nav_item 'Accounts', root_path
+
       %ul.nav.pull-right
         - if signed_in?
           = link_to oauth_logout_path, class: 'btn' do

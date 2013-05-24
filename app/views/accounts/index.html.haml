@@ -1,0 +1,8 @@
+.container
+  %h2 Choose an Unbounce account to map
+  %hr
+
+  - @accounts.each do |account|
+    %p
+      = link_to account_path(account.id), class: 'btn' do
+        #{account.name} &raquo;
