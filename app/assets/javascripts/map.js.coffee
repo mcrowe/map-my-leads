@@ -2,7 +2,7 @@ initialize = ->
 
   mapOptions =
     zoom: 3
-    center: new google.maps.LatLng(46, 2)
+    center: new google.maps.LatLng(14.81, 5.50)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   markers = []
@@ -32,7 +32,7 @@ initialize = ->
         clearTimeout(t)
         drop()
       else
-        t = setTimeout getMarkers, 500
+        t = setTimeout getMarkers, 2000
     )
 
   drop = ->
