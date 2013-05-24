@@ -11,10 +11,10 @@ module Unbounce
       end
     end
 
-    def leads
+    def leads(options = {})
       l = []
       sub_accounts.each do |sub_account|
-        l += sub_account.leads
+        l += sub_account.leads(options)
       end
       l
     end
