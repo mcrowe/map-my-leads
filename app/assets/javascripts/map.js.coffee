@@ -43,7 +43,7 @@ initialize = ->
 
   prune = ->
     if markersToPrune.length > 0
-      tenMinutes = 10 * 60 * 1000
+      tenMinutes = 10 * 60 * 500
       m = markersToPrune[0]
       if new Date() - new Date(m.time) > tenMinutes
         marker = markersToPrune.shift()
@@ -53,7 +53,7 @@ initialize = ->
     t = undefined
     if marker
       addMarker marker
-      t = setTimeout drop, 1000
+      t = setTimeout drop, 200
     else
       clearTimeout(t)
       getMarkers()
