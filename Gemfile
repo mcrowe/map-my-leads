@@ -9,6 +9,7 @@ gem 'oauth2'
 gem 'twitter-bootstrap-rails'
 gem 'haml-rails'
 gem 'rails_config'
+gem 'geocoder'
 
 group :assets do
   gem 'therubyracer'
