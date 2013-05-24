@@ -5,6 +5,8 @@ initialize = ->
     center: new google.maps.LatLng(14.81, 5.50)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
+  accountId = $('#map-canvas').data('account_id')
+
   markers = []
   markersToPrune = []
   timeStamp = new Date().toString()
@@ -27,7 +29,7 @@ initialize = ->
 
   getMarkers = ->
     t = undefined
-    url = '/leads?from=' + encodeURIComponent(timeStamp)
+    url = '/account/' + accountId + '/leads?from=' + encodeURIComponent(timeStamp)
     $.getJSON(url, (data) =>
       generateLocations(data)
       if markers.length > 0

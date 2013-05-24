@@ -1,2 +1,2 @@
-oauth2_client_redirect_uri: http://localhost:3001/oauth/callback
-oauth2_site: http://api.unbouncedev.com:3000
+oauth2_client_redirect_uri: http://mapmyleads.herokuapp.com/oauth/callback
+oauth2_site: http://api.unbounce.com
