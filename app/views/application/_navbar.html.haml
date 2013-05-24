@@ -4,7 +4,10 @@
       = link_to 'MapMyLeads', root_path, class: 'brand'
 
       %ul.nav
-        = nav_item 'Accounts', root_path
+        = nav_item 'Choose an Account', root_path
+
+        / - if @account
+        /   %li "Showing #{@account.name}"
 
       %ul.nav.pull-right
         - if signed_in?

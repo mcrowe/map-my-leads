@@ -9,7 +9,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-    @account_id = params[:id]
+    @account = unbounce.find_account_by_id(params[:id])
   end
 
 end
