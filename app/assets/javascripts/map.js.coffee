@@ -38,7 +38,7 @@ initialize = ->
         drop()
         prune()
       else
-        t = setTimeout getMarkers, 2000
+        t = setTimeout getMarkers, 100
     )
 
   prune = ->
@@ -53,7 +53,7 @@ initialize = ->
     t = undefined
     if marker
       addMarker marker
-      t = setTimeout drop, 500
+      t = setTimeout drop, 100
     else
       clearTimeout(t)
       getMarkers()
