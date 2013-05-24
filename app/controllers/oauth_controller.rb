@@ -16,11 +16,4 @@ class OauthController < ApplicationController
     redirect_to '/'
   end
 
-  def refresh
-    new_token = access_token.refresh!
-    session[:access_token]  = new_token.token
-    session[:refresh_token] = new_token.refresh_token
-    redirect_to '/'
-  end
-
 end
