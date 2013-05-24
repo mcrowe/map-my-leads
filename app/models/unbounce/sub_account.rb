@@ -18,10 +18,12 @@ module Unbounce
       def leads_url(options = {})
         url = "/sub_accounts/#{id}/leads"
 
+        url << "?limit=#{options[:limit] || 300 }"
+
         if options[:from]
           # A bug in the api means that we have to subtract 7 hours from the date passed.
           corrected_date = options[:from] - 7.hours
-          url << "?from=#{corrected_date.rfc3339}"
+          url << "&from=#{corrected_date.rfc3339}"
         end
 
         URI.encode(url)
