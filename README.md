@@ -22,7 +22,7 @@ PRODUCTION SETUP:
 For security, add oauth credentials as herok environment variables. Set the following variables:
 OAUTH2_CLIENT_ID
 OAUTH2_CLIENT_SECRET
-
+.
 
 DEPLOYMENT:
 --------------------------
