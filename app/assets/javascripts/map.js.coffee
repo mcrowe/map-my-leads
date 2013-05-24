@@ -5,12 +5,8 @@ initialize = ->
     center: new google.maps.LatLng(46, 2)
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  markers = [
-      new google.maps.LatLng(59.32522, 18.07002),
-      new google.maps.LatLng(19.20, 75.42),
-      new google.maps.LatLng(19.25, 75.42)
-    ]
-
+  markers = []
+  timeStamp = new Date().toString()
   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions)
 
   addMarker = (marker) ->
@@ -22,12 +18,15 @@ initialize = ->
     )
 
   generateLocations = (data) ->
+    timeStamp = data[data.length - 1].createdAt if data.length > 0
     $.each data, (i, item) ->
-      markers.push(new google.maps.LatLng(item.latitude, item.longtitude))
+      markers.push(new google.maps.LatLng(item.latitude, item.longitude))
 
   getMarkers = ->
     t = undefined
-    $.getJSON('/leads', (data) =>
+    url = '/leads?from=' + encodeURIComponent(timeStamp)
+    console.log(url)
+    $.getJSON(url, (data) =>
       generateLocations(data)
       if markers.length > 0
         clearTimeout(t)
@@ -39,7 +38,6 @@ initialize = ->
   drop = ->
     marker = markers.shift()
     t = undefined
-    console.log(marker)
     if marker
       addMarker marker
       t = setTimeout drop, 500
