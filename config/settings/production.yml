@@ -1,2 +1,2 @@
 oauth2_client_redirect_uri: http://mapmyleads.herokuapp.com/oauth/callback
-oauth2_site: http://api.unbounce.com
+oauth2_site: https://api.unbounce.com
