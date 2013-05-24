@@ -8,11 +8,18 @@ class LeadsController < ApplicationController
 
     account = unbounce.accounts.first
 
-    date = params[:from].blank? ? nil : DateTime.parse(params[:from])
+    date = params[:from].blank? ? nil : parse_date
 
     leads = Lead.load(account.leads(from: date))
 
     render json: leads
   end
+
+  private
+
+    def parse_date
+      # NOTE: Due to bug in api, must use local time zone.
+      Time.zone.parse(params[:from]).to_datetime
+    end
 
 end
