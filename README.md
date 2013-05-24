@@ -11,7 +11,7 @@ Start lp-webapp on port 3000, and map-my-leads on port 3001 (rails server -p 300
 Visit api.unbouncedev.com:3000/oauth/applications and sign in as an admin user when prompted.
 Create a new application, with redirect uri "http://localhost:3001/oauth/callback" , and write down the client id and secret.
 
-Add your client id and secret to the 'settings.local.yml' file, e.g.:
+Add your client id and secret to the 'config/settings.local.yml' file, e.g.:
 
 oauth2_client_id: your_id
 oauth2_client_secret: your_secret
@@ -22,7 +22,7 @@ PRODUCTION SETUP:
 For security, add oauth credentials as herok environment variables. Set the following variables:
 OAUTH2_CLIENT_ID
 OAUTH2_CLIENT_SECRET
-
+.
 
 DEPLOYMENT:
 --------------------------

@@ -5,11 +5,27 @@ module Unbounce
       @data['name']
     end
 
-    def leads
-      @token.get("/sub_accounts/#{id}/leads").parsed["leads"].map do |lead_hash|
+    def leads(options = {})
+      url = leads_url(options)
+
+      @token.get(url).parsed['leads'].map do |lead_hash|
         Unbounce::Lead.new(@token, lead_hash)
       end
     end
+
+    private
+
+      def leads_url(options = {})
+        url = "/sub_accounts/#{id}/leads"
+
+        if options[:from]
+          # A bug in the api means that we have to subtract 7 hours from the date passed.
+          corrected_date = options[:from] - 7.hours
+          url << "?from=#{corrected_date.rfc3339}"
+        end
+
+        URI.encode(url)
+      end
 
   end
 end
