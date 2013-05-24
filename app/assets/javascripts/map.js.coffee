@@ -32,7 +32,7 @@ initialize = ->
         clearTimeout(t)
         drop()
       else
-        t = setTimeout getMarkers, 500
+        t = setTimeout getMarkers, 2000
     )
 
   drop = ->
