@@ -18,7 +18,7 @@ module Unbounce
       def leads_url(options = {})
         url = "/sub_accounts/#{id}/leads"
 
-        url << "?limit=#{options[:limit] || 300 }"
+        url << "?limit=#{options[:limit] || 10 }"
 
         if options[:from]
           # A bug in the api means that we have to subtract 7 hours from the date passed.
