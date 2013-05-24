@@ -21,8 +21,7 @@ initialize = ->
       position: marker
     )
   getMarkers = ->
-    $.getJSON('/leads', ->
-
+    $.getJSON('/leads', (data)->
     )
 
   drop = ->
