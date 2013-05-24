@@ -5,13 +5,6 @@
 
       %ul.nav.pull-right
         - if signed_in?
-
           = link_to oauth_logout_path, class: 'btn' do
             %i.icon-off
-            Log Out
-
-        - else
-          = link_to oauth_login_path, class: 'btn btn-primary' do
-            Log in with Unbounce
-            %i.icon-chevron-right
-
+            Sign Out

@@ -11,5 +11,13 @@ module Unbounce
       end
     end
 
+    def leads
+      l = []
+      sub_accounts.each do |sub_account|
+        l += sub_account.leads
+      end
+      l
+    end
+
   end
 end
