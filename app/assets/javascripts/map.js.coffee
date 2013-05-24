@@ -43,9 +43,9 @@ initialize = ->
 
   prune = ->
     if markersToPrune.length > 0
-      oneMinute = 60 * 1000
+      tenMinutes = 10 * 60 * 1000
       m = markersToPrune[0]
-      if new Date() - new Date(m.time) > oneMinute
+      if new Date() - new Date(m.time) > tenMinutes
         marker = markersToPrune.shift()
         marker.setMap(null)
   drop = ->
@@ -60,4 +60,5 @@ initialize = ->
 
   drop()
 
-window.onload = initialize
+if $('#map-canvas').length > 0
+  window.onload = initialize

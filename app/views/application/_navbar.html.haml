@@ -6,10 +6,11 @@
       %ul.nav
         = nav_item 'Choose an Account', root_path
 
-        / - if @account
-        /   %li "Showing #{@account.name}"
-
       %ul.nav.pull-right
+        - if @account
+          %li
+            %a Showing #{@account.name}
+
         - if signed_in?
           = link_to oauth_logout_path, class: 'btn' do
             %i.icon-off
