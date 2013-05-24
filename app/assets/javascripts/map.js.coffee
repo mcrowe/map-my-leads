@@ -53,7 +53,7 @@ initialize = ->
     t = undefined
     if marker
       addMarker marker
-      t = setTimeout drop, 500
+      t = setTimeout drop, 1000
     else
       clearTimeout(t)
       getMarkers()
