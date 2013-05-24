@@ -20,8 +20,20 @@ initialize = ->
       animation: google.maps.Animation.DROP
       position: marker
     )
+
+  generateLocations = (data) ->
+    $.each data, (i, item) ->
+      markers.push(new google.maps.LatLng(item.latitude, item.longtitude))
+
   getMarkers = ->
-    $.getJSON('/leads', (data)->
+    t = undefined
+    $.getJSON('/leads', (data) =>
+      generateLocations(data)
+      if markers.length > 0
+        clearTimeout(t)
+        drop()
+      else
+        t = setTimeout getMarkers, 500
     )
 
   drop = ->
