@@ -25,7 +25,7 @@ initialize = ->
   generateLocations = (data) ->
     timeStamp = data[data.length - 1].createdAt if data.length > 0
     $.each data, (i, item) ->
-      if item.latitude > 0 and item.longitude > 0
+      if !(item.latitude == 0 and item.longitude == 0)
         markers.push(new google.maps.LatLng(item.latitude, item.longitude))
 
   getMarkers = ->
