@@ -20,14 +20,21 @@ initialize = ->
       animation: google.maps.Animation.DROP
       position: marker
     )
+  getMarkers = ->
+    $.getJSON('/leads', ->
+
+    )
 
   drop = ->
-    i = 0
-    while i < markers.length
-
-      #setTimeout (->
-        addMarker markers[i]
-      #), 1000
+    marker = markers.shift()
+    t = undefined
+    console.log(marker)
+    if marker
+      addMarker marker
+      t = setTimeout drop, 500
+    else
+      clearTimeout(t)
+      getMarkers()
 
   drop()
 
