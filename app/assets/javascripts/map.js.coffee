@@ -21,13 +21,31 @@ initialize = ->
       position: marker
     )
 
-  drop = ->
-    i = 0
-    while i < markers.length
+  generateLocations = (data) ->
+    $.each data, (i, item) ->
+      markers.push(new google.maps.LatLng(item.latitude, item.longtitude))
 
-      #setTimeout (->
-        addMarker markers[i]
-      #), 1000
+  getMarkers = ->
+    t = undefined
+    $.getJSON('/leads', (data) =>
+      generateLocations(data)
+      if markers.length > 0
+        clearTimeout(t)
+        drop()
+      else
+        t = setTimeout getMarkers, 500
+    )
+
+  drop = ->
+    marker = markers.shift()
+    t = undefined
+    console.log(marker)
+    if marker
+      addMarker marker
+      t = setTimeout drop, 500
+    else
+      clearTimeout(t)
+      getMarkers()
 
   drop()
 
