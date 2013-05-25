@@ -33,10 +33,10 @@ initialize = ->
     url = '/accounts/' + accountId + '/leads?from=' + encodeURIComponent(timeStamp)
     $.getJSON(url, (data) =>
       generateLocations(data)
+      prune()
       if markers.length > 0
         clearTimeout(t)
         drop()
-        prune()
       else
         t = setTimeout getMarkers, 2000
     )
