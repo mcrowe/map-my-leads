@@ -25,7 +25,7 @@ initialize = ->
   generateLocations = (data) ->
     timeStamp = data[data.length - 1].createdAt if data.length > 0
     $.each data, (i, item) ->
-      if item.latitude > 0 and item.longitude > 0
+      if !(item.latitude == 0 and item.longitude == 0)
         markers.push(new google.maps.LatLng(item.latitude, item.longitude))
 
   getMarkers = ->
@@ -38,14 +38,14 @@ initialize = ->
         clearTimeout(t)
         drop()
       else
-        t = setTimeout getMarkers, 2000
+        t = setTimeout getMarkers, 100
     )
 
   prune = ->
     if markersToPrune.length > 0
-      oneMinute = 60 * 1000
+      tenMinutes = 10 * 60 * 500
       m = markersToPrune[0]
-      if new Date() - new Date(m.time) > oneMinute
+      if new Date() - new Date(m.time) > tenMinutes
         marker = markersToPrune.shift()
         marker.setMap(null)
   drop = ->
@@ -53,11 +53,12 @@ initialize = ->
     t = undefined
     if marker
       addMarker marker
-      t = setTimeout drop, 500
+      t = setTimeout drop, 200
     else
       clearTimeout(t)
       getMarkers()
 
   drop()
 
-window.onload = initialize
+if $('#map-canvas').length > 0
+  window.onload = initialize

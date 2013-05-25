@@ -11,5 +11,9 @@ module Unbounce
       end
     end
 
+    def find_account_by_id(id)
+      accounts.find { |a| a.id == id.to_i }
+    end
+
   end
 end

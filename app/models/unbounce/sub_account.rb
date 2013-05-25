@@ -18,7 +18,7 @@ module Unbounce
       def leads_url(options = {})
         url = "/sub_accounts/#{id}/leads"
 
-        url << "?limit=#{options[:limit] || 5 }"
+        url << "?limit=#{options[:limit] || 50 }"
 
         if options[:from]
           url << "&from=#{options[:from].rfc3339}"

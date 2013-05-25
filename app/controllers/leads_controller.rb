@@ -6,7 +6,7 @@ class LeadsController < ApplicationController
   def index
     head :unauthorized and return unless signed_in?
 
-    account = unbounce.accounts.first
+    account = unbounce.find_account_by_id(params[:account_id])
 
     date = params[:from].blank? ? nil : parse_date
 
